@@ -53,10 +53,13 @@ section {
   font-size: 2.5rem;
   color: var(--text-color);
   font-weight: 600;
-  cursor: default;
+  cursor: pointer;
+  width: 30px;
+  display: flex;
+  margin-right: 10px;
 }
 
-a {
+nav a {
   font-size: 1.7rem;
   color: var(--text-color);
   margin-left: 4rem;
