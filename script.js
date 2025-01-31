@@ -71,3 +71,45 @@ document.addEventListener("click", function (e) {
     hammenu.classList.remove("bx-x");
   }
 });
+
+
+// Email Js
+function sendMail(event){
+  event.preventDefault();
+
+  var nickname = document.getElementById("nickname").value.trim();
+  var mobile_number = document.getElementById("mobile_number").value.trim();
+
+  if (!nickname) {
+    nickname = "Anonim";
+  }
+  if (!mobile_number) {
+    mobile_number = "No phone number";
+  }
+
+  var params = {
+    name: document.getElementById("name").value,
+    email: document.getElementById("email").value,
+    nickname: nickname,
+    mobile_number: mobile_number,
+    message: document.getElementById("message").value,
+  };
+  const serviceID = "service_oxxfpan";
+  const templateID = "template_ojk0ylj";
+  
+  emailjs.send(serviceID, templateID, params)
+    .then(
+      (res) =>{
+        document.getElementById("name").value = "",
+        document.getElementById("email").value = "",
+        document.getElementById("message").value = "",
+        document.getElementById("nickname").value = "",
+        document.getElementById("mobile_number").value = "",
+        console.log(res),
+        alert("Your message has been sent successfully!");
+      })
+    .catch((err) => {
+      console.log(err);
+      alert("Oops! Something went wrong. Please try again later.");
+    });
+}
